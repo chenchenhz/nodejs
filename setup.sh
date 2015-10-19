@@ -5,3 +5,6 @@ export DISPLAY=:1.0
 # Start node server
 node first.js >>/home/cheche/first_log &
 
+
+
+
