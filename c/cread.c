@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <time.h>
 
 int main(int argc,char** argv)
 {
@@ -28,6 +29,9 @@ int main(int argc,char** argv)
   fread(data,sizeof(char),max,ptr_file);
   fclose(ptr_file);
 
+
+  clock_t t;
+  t = clock();
   for(int i=0;i<size;i++)
     for(int j=0;j<size;j++)
       {
@@ -58,6 +62,8 @@ int main(int argc,char** argv)
 	int val = sum/cnt;
 	out[index]=val;
       }
+  t=clock()-t;
   printf("arg %s, size: %d, max: %d, total ops: %d\n",argv[1],size,max,ops);
+  printf("Took %f seconds(%d clicks)\n",((float)t)/CLOCKS_PER_SEC,(int)t);
   return 0;
 }
