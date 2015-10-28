@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-
+#define uint8 unsigned char
 int main(int argc, char **argv)
 {
   int counter;
@@ -14,7 +14,7 @@ int main(int argc, char **argv)
   int size=atoi(argv[1]);
   int max=size*size;
 
-  char *data = malloc(max*sizeof(char));
+  uint8 *data = malloc(max*sizeof(uint8));
 
   ptr_myfile=fopen("test.bin","wb");
   if(!ptr_myfile)
@@ -26,7 +26,8 @@ int main(int argc, char **argv)
     {
       data[counter]=counter%256;
     }
-  fwrite(&data,sizeof(char),max,ptr_myfile);
+  printf("size: %d, total: %d, size: %d\n", size, max, (int)(max*sizeof(uint8)));
+  fwrite(data,sizeof(uint8),max,ptr_myfile);
   fclose(ptr_myfile);
   return 0;
 }

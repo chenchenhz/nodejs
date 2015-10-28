@@ -25,7 +25,7 @@ int main(int argc,char** argv)
       printf("unable to read file");
       return 1;
     }
-  fread(&data,sizeof(char),max,ptr_file);
+  fread(data,sizeof(char),max,ptr_file);
   fclose(ptr_file);
 
   for(int i=0;i<size;i++)
